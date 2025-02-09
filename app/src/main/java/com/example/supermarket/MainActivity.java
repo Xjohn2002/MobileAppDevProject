@@ -1,6 +1,10 @@
 package com.example.supermarket;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,5 +25,25 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+    }
+    private void initRateButton(){
+        Button RateButton = findViewById(R.id.rateBtn);
+        RateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, StoreRatings.class);
+
+                String name;
+                name = ((EditText) findViewById(R.id.etMarketName)).getText().toString();
+                String address;
+                address = ((EditText) findViewById(R.id.etMarketAddress)).getText().toString();
+
+                intent.putExtra("name", name);
+                intent.putExtra("address", name);
+
+                startActivity(intent);
+
+            }
+        });
     }
 }
